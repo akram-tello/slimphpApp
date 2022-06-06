@@ -24,11 +24,19 @@ $app->get('/', function (Request $request, Response $response) {
     return $response;
 })->setName('root');
 
-$app->get('/app', function (Request $request, Response $response) {
-    $response->getBody()->write('Hello, app!');
+$app->get('/home', function (Request $request, Response $response) {
+    // $name = $args['name'];
+    $response->getBody()->write('Home app!');
     return $response;
 })->setName('root');
 
+$app->get('/api/{name}', function (Request $request, Response $response, array $args) {
+    $name = $args['name'];
+    $response->getBody()->write("Hello, $name");
+
+    return $response;
+});
+
 // Run app
 $app->run();
-?> 
+?>
