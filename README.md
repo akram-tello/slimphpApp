@@ -7,8 +7,10 @@ installiton instructions:
 2. run composer install
 3. add .htaccess file on main root folder
 4. add `RewriteEngine on
-RewriteRule ^$ public/ [L]
-RewriteRule (.*) public/$1 [L]` in the .htaccess file
+RewriteEngine On
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^ index.php [QSA,L]` in the .htaccess file
 5. add another .htaccess file on public folder
 6. add `RewriteEngine on
 RewriteRule ^$ index.php [L]
